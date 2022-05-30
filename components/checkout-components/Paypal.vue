@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { OrdersApi } from '../../api/order'
+// import { OrdersApi } from '../../api/order'
 
 export default {
   name: 'Paypal',
@@ -26,7 +26,7 @@ export default {
     const { items, total } = this.getItems()
 
     const shippingAddress = this.shippingAddresses.find(
-      (address) => address.id == this.shippingAddress
+      (address) => address.id === this.shippingAddress
     )
 
     setTimeout(() => {
@@ -111,6 +111,8 @@ export default {
           },
           quantity: item.amount,
         })
+
+        return {}
       })
 
       return { items, total }
@@ -119,15 +121,15 @@ export default {
       data.shipping_address_id = this.shippingAddress
       data.payment_method = this.paymentMethod
 
-      OrdersApi.store(this.$axios, data).then((response) => {
-        this.$store.commit('cart/clear')
+      // OrdersApi.store(this.$axios, data).then((response) => {
+      //   this.$store.commit('cart/clear')
 
-        if (success) {
-          this.$router.push('/checkout-paid')
-        } else {
-          this.$router.push('/checkout-cancel')
-        }
-      })
+      //   if (success) {
+      //     this.$router.push('/checkout-paid')
+      //   } else {
+      //     this.$router.push('/checkout-cancel')
+      //   }
+      // })
     },
   },
 }

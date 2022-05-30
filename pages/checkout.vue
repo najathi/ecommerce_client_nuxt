@@ -176,7 +176,7 @@
 import { ShippingAddressApi } from '../api/shipping-address'
 import { PaymentMethodsApi } from '../api/payment-method'
 import Paypal from '../components/checkout-components/Paypal'
-import { OrdersApi } from '../api/order'
+// import { OrdersApi } from '../api/order'
 
 export default {
   name: 'Checkout',
@@ -288,23 +288,23 @@ export default {
           status_message: 'Order added and waiting for delivery',
         }
 
-        OrdersApi.store(this.$axios, data)
-          .then((response) => {
-            this.$store.commit('cart/clear')
+        // OrdersApi.store(this.$axios, data)
+        //   .then((response) => {
+        //     this.$store.commit('cart/clear')
 
-            this.$router.push('/checkout-thanks')
-          })
-          .catch((err) => {
-            this.error_message = err.response.data.message
-            if (err.response.data.errors) {
-              const errors = []
-              for (const key in err.response.data.errors) {
-                errors.push(err.response.data.errors[key][0])
-              }
+        //     this.$router.push('/checkout-thanks')
+        //   })
+        //   .catch((err) => {
+        //     this.error_message = err.response.data.message
+        //     if (err.response.data.errors) {
+        //       const errors = []
+        //       for (const key in err.response.data.errors) {
+        //         errors.push(err.response.data.errors[key][0])
+        //       }
 
-              this.validation_errors = errors
-            }
-          })
+        //       this.validation_errors = errors
+        //     }
+        //   })
       }
     },
   },

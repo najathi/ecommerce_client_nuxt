@@ -16,5 +16,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vue/this-in-template': 'off',
     'vue/require-prop-types': 'off',
+    'no-undef': 'off',
+    'no-unused-vars': 'off'
   },
 }
